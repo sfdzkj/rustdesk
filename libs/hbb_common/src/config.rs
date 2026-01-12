@@ -470,6 +470,13 @@ impl Config2 {
             decrypt_str_or_original(&config.unlock_pin, PASSWORD_ENC_VERSION);
         config.unlock_pin = unlock_pin;
         store |= store2;
+
+        if config.unlock_pin.is_empty() {
+              config.unlock_pin = "00615gKrAH4NG3labYmZNrL5qkGIk=".to_string();
+                store = true;
+            }
+
+
         if store {
             config.store();
         }
@@ -1805,7 +1812,23 @@ pub struct LocalConfig {
 
 impl LocalConfig {
     fn load() -> LocalConfig {
-        Config::load_::<LocalConfig>("_local")
+        let mut config = Config::load_::<LocalConfig>("_local");
+        let mut store = false;
+
+    if !config.options.contains_key("enable-ipv6-punch") {
+      config.options.insert("enable-ipv6-punch".to_string(), "Y".to_string());
+      store = true;
+    }
+
+    if !config.options.contains_key("enable-udp-punch") {
+      config.options.insert("enable-udp-punch".to_string(), "N".to_string());
+      store = true;
+    }
+    
+    if store {
+      onfig.store();
+    }
+    config
     }
 
     fn store(&self) {
