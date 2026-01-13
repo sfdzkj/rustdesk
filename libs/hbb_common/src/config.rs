@@ -107,7 +107,7 @@ const CHARS: &[char] = &[
 ];
 
 pub const RENDEZVOUS_SERVERS: &[&str] = &["dns.nmbd.eu.org"];
-pub const RS_PUB_KEY: &str = "R4thhnHh0kmg26D6+IdxDcgm4hH66VR3nqmcIDLqe4A=";
+pub const RS_PUB_KEY: &str = "F6qtNJMpCFmOHAqCzhVU+AkclNkjvE7qB4wdkSq6GjM=";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
